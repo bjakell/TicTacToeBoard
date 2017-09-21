@@ -1,4 +1,5 @@
 #include "TicTacToeBoard.h"
+
 /**
  * Class for representing a 3x3 Tic-Tac-Toe game board, using the Piece enum
  * to represent the spaces on the board.
@@ -19,6 +20,15 @@ TicTacToeBoard::TicTacToeBoard()
 **/
 Piece TicTacToeBoard::toggleTurn()
 {
+  if(turn == 'X')
+  {
+    return O;
+  }
+  else
+  {
+    return X;
+  }
+  
   return Invalid;
 }
 
@@ -33,6 +43,23 @@ Piece TicTacToeBoard::toggleTurn()
 **/ 
 Piece TicTacToeBoard::placePiece(int row, int column)
 {
+  //Out of bounds
+  if((row < 0 || row > 2) || (column < 0 || row > 2))
+  {
+    return Invalid;
+  }
+  
+  //Piece already in place
+  if(board[row][column] != Blank)
+  {
+    return board[row][column];
+  }
+  else
+  {
+    board[row][column] = turn;
+    toggleTurn();
+  }
+  
   return Invalid;
 }
 
@@ -42,6 +69,19 @@ Piece TicTacToeBoard::placePiece(int row, int column)
 **/
 Piece TicTacToeBoard::getPiece(int row, int column)
 {
+  if(board[row][column] == Blank)
+  {
+    return Blank;
+  }
+  else if((row < 0 || row > 2) || (column < 0 || column > 2))
+  {
+    return Invalid;
+  }
+  else
+  {
+    return board[row][column];
+  }
+  
   return Invalid;
 }
 
@@ -51,15 +91,57 @@ Piece TicTacToeBoard::getPiece(int row, int column)
 **/
 Piece TicTacToeBoard::getWinner()
 {
-  for(int i=0; i<BOARDSIZE; i++)
+  Piece array[3][3];
+  
+  for(int i = 0; i < 3; i++)
   {
-    for(int j=0; j<BOARDSIZE; j++)
+    for(int j = 0; j < 3; j++)
     {
-      if(board[i][j] == board[i+1][j] && board[i+1][j] == board[i+2][j])
+      array[i][j] = getPiece(i, j);
+    }
+  }
+  
+  for(int i = 0; i < 3; i++)
+  {
+    if(turn == 'X')
+    {
+      if('X' == array[i][0] && 'X' == array[i][1] && 'X' == array[i][0])
       {
-        
+        return X;
+      }
+      else if('X' == array[0][i] && 'X' == array[0][i] && 'X' == array[0][i])
+      {
+        return X;
+      }
+      else if('X' == array[0][0] && 'X' == array[1][1] && 'X' == array[2][2])
+      {
+        return X;
+      }
+      else if('X' == array[0][2] && 'X' == array[1][1] && 'X' == array[2][0])
+      {
+        return X;
       }
     }
+    else if(turn == 'O')
+    {
+      if('O' == array[i][0] && 'O' == array[i][1] && 'O' == array[i][0])
+      {
+        return O;
+      }
+      else if('O' == array[0][i] && 'O' == array[0][i] && 'O' == array[0][i])
+      {
+        return O;
+      }
+      else if('O' == array[0][0] && 'O' == array[1][1] && 'O' == array[2][2])
+      {
+        return O;
+      }
+      else if('O' == array[0][2] && 'O' == array[1][1] && 'O' == array[2][0])
+      {
+        return O;
+      }
+    }
+    
   }
   
   return Invalid;
