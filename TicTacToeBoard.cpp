@@ -103,7 +103,7 @@ Piece TicTacToeBoard::getWinner()
   
   for(int i = 0; i < 3; i++)
   {
-    if(turn == 'X')
+    /*if(turn == 'X')
     {
       if('X' == array[i][0] && 'X' == array[i][1] && 'X' == array[i][0])
       {
@@ -140,8 +140,23 @@ Piece TicTacToeBoard::getWinner()
       {
         return O;
       }
+    }*/
+    if(turn == array[i][0] && turn == array[i][1] && turn == array[i][0])
+    {
+      return turn;
     }
-    
+    else if(turn == array[0][i] && turn == array[0][i] && turn == array[0][i])
+    {
+      return turn;
+    }
+    else if(turn == array[0][0] && turn == array[1][1] && turn == array[2][2])
+    {
+      return turn;
+    }
+    else if(turn == array[0][2] && turn == array[1][1] && turn == array[2][0])
+    {
+      return turn;
+    }
   }
   
   return Invalid;

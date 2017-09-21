@@ -20,3 +20,17 @@ TEST(TicTacToeBoardTest, sanityCheck)
 	ASSERT_TRUE(true);
 }
 */
+
+TEST(TicTacToeBoardTest, sanityCheck)
+{
+	TicTacToeBoard board;
+	ASSERT_TRUE(true);
+}
+
+TEST(TicTacToeBoardTest, getWinnerNoPiece)
+{
+	TicTacToeBoard board;
+	Piece result = board.getWinner();
+	
+	ASSERT_EQ(Invalid, result);
+}

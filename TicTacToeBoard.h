@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 #ifndef _TICTACTOEBOARD_H_
 #define _TICTACTOEBOARD_H_
 
