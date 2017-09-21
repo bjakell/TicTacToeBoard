@@ -34,3 +34,29 @@ TEST(TicTacToeBoardTest, getWinnerNoPiece)
 	
 	ASSERT_EQ(Invalid, result);
 }
+
+TEST(TicTacToeBoardTest, toggleTurnWorking)
+{
+	TicTacToeBoard board;
+	
+	Piece result;
+	result = board.toggleTurn();
+	
+	ASSERT_NE(X, result);
+}
+
+TEST(TicTacToeBoardTest, placePieceInBounds)
+{
+	TicTacToeBoard board;
+	Piece result = board.placePiece(0,0);
+	
+	ASSERT_EQ(X, result);
+}
+
+TEST(TicTacToeBoardTest, placePieceOutOfBounds)
+{
+	TicTacToeBoard board;
+	Piece result = board.placePiece(4,4);
+	
+	ASSERT_EQ(Invalid, result);
+}
