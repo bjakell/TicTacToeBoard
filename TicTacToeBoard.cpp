@@ -143,7 +143,7 @@ Piece TicTacToeBoard::getWinner()
         return O;
       }
     }*/
-    if(turn == array[i][0] && turn == array[i][1] && turn == array[i][0])
+    if(turn == array[i][0] && turn == array[i][1] && turn == array[i][2])
     {
       return turn;
     }
