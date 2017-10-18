@@ -105,49 +105,11 @@ Piece TicTacToeBoard::getWinner()
   
   for(int i = 0; i < 3; i++)
   {
-    /*if(turn == 'X')
-    {
-      if('X' == array[i][0] && 'X' == array[i][1] && 'X' == array[i][0])
-      {
-        return X;
-      }
-      else if('X' == array[0][i] && 'X' == array[0][i] && 'X' == array[0][i])
-      {
-        return X;
-      }
-      else if('X' == array[0][0] && 'X' == array[1][1] && 'X' == array[2][2])
-      {
-        return X;
-      }
-      else if('X' == array[0][2] && 'X' == array[1][1] && 'X' == array[2][0])
-      {
-        return X;
-      }
-    }
-    else if(turn == 'O')
-    {
-      if('O' == array[i][0] && 'O' == array[i][1] && 'O' == array[i][0])
-      {
-        return O;
-      }
-      else if('O' == array[0][i] && 'O' == array[0][i] && 'O' == array[0][i])
-      {
-        return O;
-      }
-      else if('O' == array[0][0] && 'O' == array[1][1] && 'O' == array[2][2])
-      {
-        return O;
-      }
-      else if('O' == array[0][2] && 'O' == array[1][1] && 'O' == array[2][0])
-      {
-        return O;
-      }
-    }*/
     if(turn == array[i][0] && turn == array[i][1] && turn == array[i][2])
     {
       return turn;
     }
-    else if(turn == array[0][i] && turn == array[0][i] && turn == array[0][i])
+    else if(turn == array[0][i] && turn == array[1][i] && turn == array[2][i])
     {
       return turn;
     }
